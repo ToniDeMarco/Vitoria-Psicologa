@@ -47,12 +47,12 @@
   <style>
     @font-face{font-family:"Work Sans";src:url(Assets/fonts/work-sans-variable.woff2) format("woff2");font-weight:300 600;font-display:swap}
     @font-face{font-family:"Instrument Serif";src:url(Assets/fonts/instrument-serif-regular.woff2) format("woff2");font-weight:400;font-display:swap}
-    :root{--rosa-50:#FFF6F6;--petroleo:#105666;--marsala:#8A3445;--ink:#10323A}
+    :root{--bege:#F7F4D5;--petroleo:#105666;--musgo:#839958;--ink:#10323A}
     *,*::before,*::after{box-sizing:border-box}
     html{-webkit-text-size-adjust:100%}
-    body{margin:0;background:var(--rosa-50);color:var(--ink);font-family:"Work Sans",system-ui,sans-serif}
+    body{margin:0;background:var(--bege);color:var(--ink);font-family:"Work Sans",system-ui,sans-serif}
     .preloader{display:none}
-    .js .preloader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:var(--rosa-50);transition:opacity .8s cubic-bezier(.65,0,.35,1),visibility 0s .8s}
+    .js .preloader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:var(--bege);transition:opacity .8s cubic-bezier(.65,0,.35,1),visibility 0s .8s}
     .js .preloader.is-done{opacity:0;visibility:hidden}
     .is-loading body{overflow:hidden}
     .preloader__inner{display:grid;justify-items:center;gap:22px}
@@ -61,7 +61,7 @@
     .preloader__percent{font-weight:700;font-size:1.75rem;letter-spacing:.02em;color:var(--petroleo);font-variant-numeric:tabular-nums;min-width:4ch;text-align:center}
     .preloader__name{font-family:"Instrument Serif",Georgia,serif;font-size:1.25rem;color:var(--ink);opacity:.75}
     .preloader__track{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(16,86,102,.12)}
-    .preloader__bar{display:block;height:100%;background:linear-gradient(90deg,var(--petroleo),var(--marsala));transform:scaleX(0);transform-origin:left}
+    .preloader__bar{display:block;height:100%;background:linear-gradient(90deg,var(--petroleo),var(--musgo));transform:scaleX(0);transform-origin:left}
   </style>
 
   <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -134,11 +134,11 @@
         "@id": "https://www.seudominio.com.br/#duvidas",
         "mainEntity": [
           { "@type": "Question", "name": "Como funciona a terapia online?", "acceptedAnswer": { "@type": "Answer", "text": "As sessões acontecem por videochamada no Google Meet. Você recebe o link no kit de boas-vindas e não precisa instalar nada: basta um celular ou computador com internet e um lugar reservado, onde você se sinta à vontade." } },
-          { "@type": "Question", "name": "Você atende em Goiânia?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. O atendimento é online, para pessoas de Goiânia e região, sem precisar se deslocar até um consultório." } },
+          { "@type": "Question", "name": "Você atende Presencialmente?", "acceptedAnswer": { "@type": "Answer", "text": "Caso você seja de Goiânia (GO) e deseje realizar o atendimento de forma presencial, sim." } },
           { "@type": "Question", "name": "Quem pode fazer terapia com você?", "acceptedAnswer": { "@type": "Answer", "text": "Atendo adolescentes, adultos e idosos pela Terapia Cognitivo-Comportamental (TCC)." } },
           { "@type": "Question", "name": "O que é a Terapia Cognitivo-Comportamental (TCC)?", "acceptedAnswer": { "@type": "Answer", "text": "É uma abordagem com base científica que ajuda a compreender a relação entre o que você pensa, sente e faz. Na TCC, a escuta e o acolhimento caminham junto com estratégias práticas para lidar com as dificuldades e construir mudanças com autonomia." } },
-          { "@type": "Question", "name": "Preciso saber exatamente o que estou sentindo para começar?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Nem sempre precisamos saber exatamente o que está acontecendo para começar a compreender. A primeira sessão é justamente para nos conhecermos e entendermos o que te trouxe até aqui." } },
-          { "@type": "Question", "name": "Como faço para agendar?", "acceptedAnswer": { "@type": "Answer", "text": "É só me chamar no WhatsApp. Conversamos sobre como funciona o atendimento, esclareço as suas dúvidas e combinamos o dia e o horário que fizerem mais sentido para você." } }
+          { "@type": "Question", "name": "Preciso estar passando por um momento difícil para buscar terapia?", "acceptedAnswer": { "@type": "Answer", "text": "Não. A psicoterapia não é apenas para momentos de crise ou sofrimento emocional. Ela também é um espaço de autoconhecimento, desenvolvimento pessoal e cuidado com a saúde mental." } },
+          { "@type": "Question", "name": "Você atende por plano de saúde?", "acceptedAnswer": { "@type": "Answer", "text": "Não sou vinculada a nenhum plano de saúde no momento." } }
         ]
       }
     ]
@@ -297,7 +297,7 @@
           <div class="hero__content">
             <p class="eyebrow eyebrow--dark" data-reveal>
               <span class="eyebrow__dot" aria-hidden="true"></span>
-              Psicóloga online · Fale diretamente Comigo
+              Atendimento para todo o Brasil
             </p>
 
             <h1 class="hero__title" id="hero-title" data-reveal style="--delay:80ms">
@@ -305,7 +305,7 @@
             </h1>
 
             <p class="hero__text" data-reveal style="--delay:160ms">
-              Psicóloga clínica especialista em Terapia Cognitivo-Comportamental (TCC). Atendo adolescentes,
+              Psicóloga clínica especialista em Terapia Cognitivo-Comportamental (TCC). Atendo crianças, adolescentes,
               adultos e idosos online, com escuta, acolhimento e ciência — de onde você estiver.
             </p>
 
@@ -315,7 +315,7 @@
                  target="_blank" rel="noopener" data-cta="hero"
                  aria-label="Fale comigo pelo WhatsApp (abre em nova aba)">
                 <svg class="btn__icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
-                Fale comigo
+                <span class="hero__cta-label">Fale comigo</span>
                 <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
               </a>
               <a class="btn btn--ghost-dark btn--lg hero__insta"
@@ -387,12 +387,15 @@
           <div class="about__content">
             <p class="eyebrow" data-reveal><span class="eyebrow__dot" aria-hidden="true"></span>Sobre mim</p>
             <h2 class="section-title" id="sobre-title" data-reveal style="--delay:80ms">Oi, eu sou a <em>Vitória.</em></h2>
-            <p class="about__lead" data-reveal style="--delay:140ms">Especialista em TCC e em Gestão de Pessoas.</p>
+            <p class="about__lead" data-reveal style="--delay:140ms">Especialista em Terapia Cognitivo-Comportamental (TCC)
+</p>
 
             <div class="about__text" data-reveal style="--delay:200ms">
-              <p>Sou psicóloga clínica, registrada no CRP 09/20287, e atendo adolescentes, adultos e idosos online pela Terapia Cognitivo-Comportamental (TCC).</p>
-              <p>Minha história com a Psicologia começou antes da clínica. Durante cerca de cinco anos, trabalhei com Gestão de Pessoas, passando por diferentes organizações e conhecendo de perto os desafios das relações humanas, do trabalho e das mudanças. Foi uma trajetória que ampliou meu olhar sobre as pessoas e suas histórias.</p>
-              <p>Hoje, encontro na TCC uma forma de unir escuta, acolhimento e conhecimento científico. Meu trabalho começa pela escuta. Não para oferecer respostas prontas, mas para ajudar você a compreender o que sente, pensa, repete e vive.</p>
+              <p>Sou psicóloga clínica e realizo atendimentos online para adolescentes, adultos e idosos, com base na Terapia Cognitivo-Comportamental (TCC).</p>
+              <p>Minha trajetória na Psicologia começou na área de Gestão de Pessoas, onde atuei por cerca de cinco anos, passando por diferentes organizações e conhecendo de perto os desafios das relações humanas, do trabalho e das mudanças.</p>
+              <p>Ao longo desse caminho, também tive a oportunidade de conciliar a atuação organizacional com a prática clínica, uma área pela qual sempre tive grande interesse e identificação, especialmente pela Terapia Cognitivo-Comportamental.</p>
+              <p>Essa trajetória ampliou meu olhar sobre as pessoas e suas histórias, reforçando meu interesse em compreender como pensamos, sentimos e nos comportamos diante das diferentes experiências da vida.</p>
+              <p>Hoje, dedico minha atuação à Psicologia Clínica, unindo escuta, acolhimento e conhecimento científico. Acredito em um processo psicoterapêutico construído em conjunto, que respeita a individualidade de cada pessoa e oferece caminhos para a compreensão e a mudança.</p>
             </div>
 
             <blockquote class="about__quote" data-reveal>
@@ -411,7 +414,7 @@
                target="_blank" rel="noopener" data-cta="about"
                aria-label="Agendar uma conversa pelo WhatsApp (abre em nova aba)">
               <svg class="btn__icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
-              Agendar uma conversa
+              Agendar uma sessão
               <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
           </div>
@@ -438,8 +441,8 @@
 
           <aside class="help__aside" data-dark>
             <svg class="help__aside-icon" aria-hidden="true"><use href="#i-heart"/></svg>
-            <p class="help__quote">Nem sempre precisamos saber exatamente o que está acontecendo para começar a compreender.</p>
-            <a class="link-arrow" href="#como-funciona">Veja como funciona <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <p class="help__quote">Você não precisa compreender tudo o que sente para começar a cuidar de si.</p>
+            <a class="link-arrow" href="#como-funciona">Conheça o processo psicoterapêutico <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </aside>
         </div>
       </div>
@@ -515,7 +518,7 @@
             <a class="link-arrow link-arrow--light" data-reveal style="--delay:220ms"
                href="https://api.whatsapp.com/send/?phone=5562991522057&text=Ol%C3%A1%2C+Vit%C3%B3ria%21+Gostaria+de+agendar+minha+primeira+sess%C3%A3o.&type=phone_number&app_absent=0"
                target="_blank" rel="noopener" data-cta="faq">
-              Perguntar no WhatsApp <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+              Ainda com alguma dúvida? Vamos conversar <svg aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
           </div>
 
@@ -525,24 +528,24 @@
               <div class="faq__answer"><p>As sessões acontecem por videochamada no Google Meet. Você recebe o link no kit de boas-vindas e não precisa instalar nada: basta um celular ou computador com internet e um lugar reservado, onde você se sinta à vontade.</p></div>
             </details>
             <details class="faq__item" name="faq">
-              <summary>Você atende em Goiânia?<span class="faq__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span></summary>
-              <div class="faq__answer"><p>Sim. O atendimento é online, para pessoas de Goiânia e região, sem precisar se deslocar até um consultório.</p></div>
+              <summary>Você atende Presencialmente?<span class="faq__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span></summary>
+              <div class="faq__answer"><p>Caso você seja de Goiânia (GO) e deseje realizar o atendimento de forma presencial, sim.</p></div>
             </details>
             <details class="faq__item" name="faq">
               <summary>Quem pode fazer terapia com você?<span class="faq__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span></summary>
-              <div class="faq__answer"><p>Atendo adolescentes, adultos e idosos pela Terapia Cognitivo-Comportamental (TCC).</p></div>
+              <div class="faq__answer"><p>Atendo crianças, adolescentes, adultos e idosos pela Terapia Cognitivo-Comportamental (TCC).</p></div>
             </details>
             <details class="faq__item" name="faq">
               <summary>O que é a Terapia Cognitivo-Comportamental (TCC)?<span class="faq__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span></summary>
               <div class="faq__answer"><p>É uma abordagem com base científica que ajuda a compreender a relação entre o que você pensa, sente e faz. Na TCC, a escuta e o acolhimento caminham junto com estratégias práticas para lidar com as dificuldades e construir mudanças com autonomia.</p></div>
             </details>
             <details class="faq__item" name="faq">
-              <summary>Preciso saber exatamente o que estou sentindo para começar?<span class="faq__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span></summary>
-              <div class="faq__answer"><p>Não. Nem sempre precisamos saber exatamente o que está acontecendo para começar a compreender. A primeira sessão é justamente para nos conhecermos e entendermos o que te trouxe até aqui.</p></div>
+              <summary>Preciso estar passando por um momento difícil para buscar terapia?<span class="faq__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span></summary>
+              <div class="faq__answer"><p>Não. A psicoterapia não é apenas para momentos de crise ou sofrimento emocional. Ela também é um espaço de autoconhecimento, desenvolvimento pessoal e cuidado com a saúde mental.</p></div>
             </details>
             <details class="faq__item" name="faq">
-              <summary>Como faço para agendar?<span class="faq__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span></summary>
-              <div class="faq__answer"><p>É só me chamar no WhatsApp. Conversamos sobre como funciona o atendimento, esclareço as suas dúvidas e combinamos o dia e o horário que fizerem mais sentido para você.</p></div>
+              <summary>Você atende por plano de saúde?<span class="faq__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span></summary>
+              <div class="faq__answer"><p>Não sou vinculada a nenhum plano de saúde no momento.</p></div>
             </details>
           </div>
         </div>
@@ -563,7 +566,7 @@
           <div class="cta__head">
             <p class="eyebrow eyebrow--dark" data-reveal><span class="eyebrow__dot" aria-hidden="true"></span>O primeiro passo é seu</p>
             <h2 class="cta__title" id="cta-title" data-reveal style="--delay:80ms">
-              Não espere o peso ficar maior para <em>cuidar de você.</em>
+              Você não precisa esperar que tudo fique difícil para começar a <em>cuidar de si.</em>
             </h2>
           </div>
 
@@ -603,7 +606,7 @@
           <ul class="social" aria-label="Redes sociais">
             <li><a href="https://www.instagram.com/psivitoria.com.vc/" target="_blank" rel="noopener" data-cta="footer-instagram" aria-label="Instagram @psivitoria.com.vc (abre em nova aba)"><svg aria-hidden="true"><use href="#i-instagram"/></svg></a></li>
             <li><a href="https://api.whatsapp.com/send/?phone=5562991522057&text=Ol%C3%A1%2C+Vit%C3%B3ria%21+Gostaria+de+agendar+minha+primeira+sess%C3%A3o.&type=phone_number&app_absent=0" target="_blank" rel="noopener" data-cta="footer-social" aria-label="WhatsApp (abre em nova aba)"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg></a></li>
-            <li><a href="mailto:contato@seudominio.com.br" aria-label="Enviar e-mail"><svg aria-hidden="true"><use href="#i-mail"/></svg></a></li>
+            <li><a href="mailto:vitoriapsimendonca@gmail.com" aria-label="Enviar e-mail"><svg aria-hidden="true"><use href="#i-mail"/></svg></a></li>
           </ul>
         </div>
 
@@ -623,7 +626,7 @@
           <ul>
             <li><a href="https://api.whatsapp.com/send/?phone=5562991522057&text=Ol%C3%A1%2C+Vit%C3%B3ria%21+Gostaria+de+agendar+minha+primeira+sess%C3%A3o.&type=phone_number&app_absent=0" target="_blank" rel="noopener" data-cta="footer"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg>(62) 99152-2057</a></li>
             <li><a href="https://www.instagram.com/psivitoria.com.vc/" target="_blank" rel="noopener" data-cta="footer-instagram-link"><svg aria-hidden="true"><use href="#i-instagram"/></svg>@psivitoria.com.vc</a></li>
-            <li><a href="mailto:contato@seudominio.com.br"><svg aria-hidden="true"><use href="#i-mail"/></svg>contato@seudominio.com.br</a></li>
+            <li><a href="mailto:vitoriapsimendonca@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>vitoriapsimendonca@gmail.com</a></li>
           </ul>
         </div>
 
@@ -631,9 +634,8 @@
           <h2 class="footer__title">Atendimento</h2>
           <ul class="footer__info">
             <li>Online, pelo Google Meet</li>
-            <li>Goiânia e região</li>
-            <li>Adolescentes, adultos e idosos</li>
-            <li>Terapia Cognitivo-Comportamental</li>
+            <li>Horários flexíveis</li>
+            <li>Todas as idades</li>
           </ul>
         </div>
       </div>
