@@ -1,0 +1,20 @@
+# Permite buscadores e assistentes de IA (Google, Bing, ChatGPT, Claude, Perplexity, Gemini)
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.seudominio.com.br/sitemap.xml
