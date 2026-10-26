@@ -1212,6 +1212,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .help__aside { padding: 40px; }
 }
 
+/* Celular: botão "Agendar uma sessão" centralizado no card */
+@media (max-width: 767px) {
+  .about__content > .btn { display: flex; width: fit-content; margin-inline: auto; }
+}
+
 /* Tablet: foto ao lado do título (antes sobrava meia largura vazia ao lado
    dela); o texto corrido segue em largura total logo abaixo. As linhas 1fr
    das pontas centralizam o título na altura da foto. */
@@ -1691,6 +1696,17 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @media (min-width: 768px) {
   .cta__panel { padding: 80px 64px; }
   .btn--xl { width: auto; }
+}
+
+/* Celular: só o botão "Chamar no WhatsApp" centralizado no card. Mais
+   compacto, porque no tamanho xl ele era mais largo que o card e vazava. */
+@media (max-width: 767px) {
+  .cta__body .btn--xl {
+    justify-self: center;
+    width: auto;
+    padding: 0 22px;
+    font-size: 1rem;
+  }
 }
 
 /* Tablet: conteúdo centralizado, para não deixar a metade direita vazia */
