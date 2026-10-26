@@ -1243,12 +1243,51 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 @media (min-width: 1200px) {
+  /* Grade única com bordas alinhadas: a foto vai do "Sobre mim" até o fim
+     do texto; abaixo de um fio divisor, a citação fecha a coluna da foto e
+     a lista + botão fecham a do texto. display: contents põe os filhos do
+     .about__content direto na grade (o ::before dele vira o divisor). */
   .about {
-    grid-template-columns: 5fr 7fr;
-    gap: 96px;
-    align-items: center;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 0 80px;
+    padding: 64px;
   }
-  .about__media { width: 100%; max-width: 480px; }
+  .about__content { display: contents; }
+  .about__content > * { grid-column: 2; }
+  .about__content > .eyebrow { justify-self: start; }
+
+  .about__media {
+    grid-column: 1;
+    grid-row: 1 / 5;
+    width: 100%;
+    min-height: 480px;
+  }
+  .about__photo {
+    height: 100%;
+    aspect-ratio: auto;
+    object-position: center 20%;
+  }
+
+  .about__text { max-width: none; }
+
+  .about__content::before {
+    content: "";
+    grid-column: 1 / -1;
+    grid-row: 5;
+    height: 1px;
+    margin: 56px 0;
+    background: var(--line);
+  }
+
+  .about__quote {
+    grid-column: 1;
+    grid-row: 6 / 8;
+    align-self: center;
+    margin: 0;
+  }
+  .checklist { grid-row: 6; margin-bottom: 32px; }
+  .about__content > .btn { grid-row: 7; justify-self: start; }
+
   .help {
     grid-template-columns: 1.4fr 1fr;
     gap: 56px;
