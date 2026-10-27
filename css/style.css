@@ -734,7 +734,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 .hero__title {
-  max-width: 9em;
+  max-width: 7.5em; /* largura de "conta de tudo sozinha." (~7,41em): a justificação só ajusta o fino */
   margin-bottom: clamp(12px, 2.4vh, 24px);
   font-family: var(--font-serif);
   font-weight: 400;
@@ -742,6 +742,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
   font-size: clamp(2rem, min(9vw, 6vh), 2.75rem);
   line-height: .98;
   letter-spacing: -.02em;
+  /* As duas linhas justificadas: o título fecha um bloco com as bordas retas */
+  text-align: justify;
+  text-align-last: justify;
   text-wrap: balance;
 }
 .hero__title em {
@@ -894,34 +897,99 @@ button { font: inherit; color: inherit; cursor: pointer; }
   pointer-events: none;
 }
 
-/* Só celular: os botões viram uma coluna de ícones ao lado da foto, que ganha
-   a altura da antiga linha de botões. O display: contents põe os filhos do
-   .hero__content direto na grade do card. Sem o selo, que disputava o espaço. */
+/* Só celular: tudo em uma coluna — "Atendimento para todo o Brasil", título,
+   foto em largura total (com o selo no canto), texto e botões. O display:
+   contents põe os filhos do .hero__content direto na grade do card, para a
+   foto entrar entre o título e o texto. O card tem a altura da tela e a foto
+   fica com a linha 1fr: encolhe ou cresce para o card caber inteiro. */
 @media (max-width: 767px) {
   .hero__card {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    grid-template-rows: auto auto auto 1fr;
-    column-gap: 14px;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(140px, 1fr) auto auto;
+    padding: clamp(16px, 2.6vh, 24px) 20px clamp(18px, 3vh, 28px);
   }
   .hero__content { display: contents; }
-  .hero__content > * { grid-column: 1 / -1; }
+  .hero__content > .eyebrow { grid-row: 1; justify-self: start; margin-bottom: clamp(10px, 1.6vh, 16px); }
+
+  /* (100vw - 72px) é a largura útil do card: o título fecha em 2 linhas,
+     de borda a borda */
+  .hero__title {
+    grid-row: 2;
+    margin-bottom: clamp(12px, 2vh, 20px);
+    font-size: clamp(2rem, (100vw - 72px) / 7.55, 3rem);
+  }
+
+  /* Moldura com os cantos do card. Na foto 4:5 a cabeça vai de ~4% a ~36%
+     da altura: o recorte parte do topo e a moldura não passa de 9:5 (em
+     telas baixas ela estreita e fica centralizada), para a cabeça caber. */
+  .hero__media {
+    grid-row: 3;
+    min-height: 0;
+    margin: 0;
+  }
+  .hero__frame {
+    top: 0;
+    right: auto;
+    left: 50%;
+    translate: -50% 0;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    aspect-ratio: 9 / 5;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    container-type: inline-size; /* cqw = 1% da largura da moldura */
+  }
+  /* 8% maior e presa à esquerda: a Vitória desliza um pouco para a direita
+     sem abrir faixa vazia. A foto sempre preenche a largura, então um ponto
+     dela fica em (x × 108cqw, y × 135cqw) — 135 = 108 × 5/4. */
+  .hero__photo {
+    width: 108%;
+    max-width: none;
+    object-position: left top;
+    border-radius: 0;
+  }
+  /* Selo logo acima da mão fechada (x ≈ 18–34%, topo em y ≈ 32% da foto),
+     como se ela apontasse para ele */
+  .hero__seal {
+    top: 12cqw;
+    left: 10cqw;
+    width: 24cqw;
+    height: 24cqw;
+  }
+
+  .hero__text {
+    grid-row: 4;
+    max-width: none;
+    margin-top: clamp(14px, 2.2vh, 22px);
+    font-size: .875rem;
+    line-height: 1.55;
+  }
 
   .hero__actions {
-    position: relative;
-    z-index: 4; /* acima das ondas */
-    grid-column: 1;
-    grid-row: 4;
-    flex-direction: column;
-    align-self: center;
-    margin: clamp(16px, 3vh, 24px) 0 0;
+    grid-row: 5;
+    flex-wrap: nowrap;
+    margin-top: clamp(14px, 2.4vh, 24px);
   }
-  .hero__actions .btn { width: 58px; padding: 0; justify-content: center; }
-  .hero__cta-label,
-  .hero__actions .btn__arrow { display: none; }
+  .hero__actions .btn { min-height: 52px; }
+  .hero__actions .btn--primary { flex: 1 1 auto; }
+  .hero__insta { width: 52px; }
 
-  .hero__media { grid-column: 2; grid-row: 4; }
-  .hero__seal { display: none; }
+  .hero__waves { display: none; }
+}
+/* Celulares baixos (ou com a barra do navegador aberta): texto e foto mais
+   compactos para o card continuar inteiro na tela */
+@media (max-width: 767px) and (max-height: 700px) {
+  .hero__card { grid-template-rows: auto auto minmax(100px, 1fr) auto auto; }
+  .hero__text { font-size: .8125rem; line-height: 1.5; }
+  .hero__actions .btn { min-height: 48px; }
+  .hero__insta { width: 48px; }
+}
+/* iPhone SE e afins: o selo da foto já diz "terapia online" */
+@media (max-width: 767px) and (max-height: 600px) {
+  .hero__content > .eyebrow { display: none; }
+  .hero__card { grid-template-rows: auto auto minmax(90px, 1fr) auto auto; }
 }
 
 @media (min-width: 768px) {
@@ -998,6 +1066,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .hero__seal { width: 128px; height: 128px; top: 8%; }
   .hero__waves { width: 46%; height: 170px; }
   .hero__blob { left: -160px; width: 460px; }
+}
+
+/* Desktop: título mais contido, para não ocupar metade da altura do card */
+@media (min-width: 1200px) {
+  .hero__title { font-size: clamp(2.75rem, min(1.5rem + 2.8vw, 8vh), 4.25rem); }
+  .hero__waves { display: none; }
 }
 
 /* Tablet deitado: coluna de texto estreita, Instagram só com ícone */
@@ -1233,6 +1307,15 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .about__content > .section-title { grid-column: 2; grid-row: 3; }
   .about__lead { grid-column: 2; grid-row: 4; margin-bottom: 0; }
   .about__text { max-width: none; margin-top: 48px; }
+}
+/* Celular e tablet: citação na largura do card, justificada como o texto */
+@media (max-width: 1199px) {
+  .about__quote {
+    max-width: none;
+    text-align: justify;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
 }
 /* Tablets largos (iPad Pro, iPad deitado): texto em duas colunas, para a
    linha não ficar longa demais nem deixar meia largura vazia */
