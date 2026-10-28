@@ -256,7 +256,7 @@
 
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push(detail);
-      if (typeof window.gtag === 'function') window.gtag('event', detail.event, { cta_location: detail.cta_location });
+      if (typeof window.gtag === 'function') window.gtag('event', detail.event, { cta_location: detail.cta_location, topic: detail.topic });
       if (typeof window.fbq === 'function' && channel === 'whatsapp') window.fbq('track', 'Contact', { cta_location: detail.cta_location });
     });
   }
