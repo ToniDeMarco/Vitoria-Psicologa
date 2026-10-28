@@ -17,4 +17,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://www.seudominio.com.br/sitemap.xml
+Sitemap: https://www.psivitoriamendonca.com.br/sitemap.xml
