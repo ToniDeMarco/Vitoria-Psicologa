@@ -9,6 +9,7 @@
    07. WhatsApp: mensagem por tema + rastreamento de cliques
    08. Ano no rodapé
    09. FAQ: acordeão com abertura e fechamento animados
+   10. Aviso de cookies (LGPD) + Consent Mode do Google Analytics
    ========================================================================== */
 
 (() => {
@@ -316,6 +317,72 @@
     });
   }
 
+  /* 10. Aviso de cookies (LGPD) ========================================== */
+  // O padrão (negado) é definido no <head>, antes do gtag.js carregar.
+  // Aqui só registramos a escolha e avisamos o Google quando ela muda.
+  function initConsent() {
+    const key = 'vm-consent';
+    let stored = null;
+    try { stored = localStorage.getItem(key); } catch (e) { /* storage bloqueado */ }
+
+    const banner = document.createElement('section');
+    banner.className = 'consent';
+    banner.setAttribute('aria-label', 'Aviso de cookies');
+    banner.innerHTML = `
+      <h2 class="consent__title">Sua privacidade importa</h2>
+      <p>Com a sua permissão, uso cookies do Google Analytics para entender como o site é visitado, sem identificar você. Saiba mais na <a href="politica-de-privacidade.html">Política de Privacidade</a>.</p>
+      <div class="consent__actions">
+        <button class="btn btn--outline" type="button" data-consent="denied">Recusar</button>
+        <button class="btn btn--primary" type="button" data-consent="granted">Aceitar</button>
+      </div>`;
+    document.body.appendChild(banner);
+
+    function show(focus) {
+      root.classList.add('consent-open');
+      requestAnimationFrame(() => {
+        banner.classList.add('is-visible');
+        // só depois de visível (com visibility: hidden o foco é ignorado)
+        if (focus) banner.querySelector('button').focus({ preventScroll: true });
+      });
+    }
+    function hide() {
+      root.classList.remove('consent-open');
+      banner.classList.remove('is-visible');
+    }
+
+    // Ao recusar depois de ter aceitado, remove os cookies _ga já gravados
+    function clearAnalyticsCookies() {
+      const domain = location.hostname.replace(/^www\./, '');
+      document.cookie.split(';')
+        .map((c) => c.split('=')[0].trim())
+        .filter((name) => /^_ga/.test(name))
+        .forEach((name) => {
+          document.cookie = `${name}=; Max-Age=0; path=/; domain=.${domain}`;
+          document.cookie = `${name}=; Max-Age=0; path=/`;
+        });
+    }
+
+    banner.addEventListener('click', (e) => {
+      const button = e.target.closest('[data-consent]');
+      if (!button) return;
+      const choice = button.dataset.consent;
+      try { localStorage.setItem(key, choice); } catch (err) { /* storage bloqueado */ }
+      if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: choice });
+      if (choice === 'denied') clearAnalyticsCookies();
+      hide();
+    });
+
+    // "Preferências de cookies" (rodapé e política) reabre o aviso;
+    // sem JS, o link leva para a seção de cookies da política
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('[data-consent-open]')) return;
+      e.preventDefault();
+      show(true);
+    });
+
+    if (stored !== 'granted' && stored !== 'denied') setTimeout(show, reduceMotion ? 0 : 600);
+  }
+
   /* Início =============================================================== */
   initHeader();
   initMenu();
@@ -324,6 +391,9 @@
   initWhatsApp();
   initYear();
   initFaq();
-  // As animações de entrada começam quando o preloader sai de cena
-  initPreloader(initReveal);
+  // Animações de entrada e aviso de cookies começam quando o preloader sai de cena
+  initPreloader(() => {
+    initReveal();
+    initConsent();
+  });
 })();

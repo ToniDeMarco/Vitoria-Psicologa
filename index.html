@@ -4,15 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <!-- Google tag (gtag.js) — GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ETESD2NNK7"></script>
+  <!-- Google tag (gtag.js) — GA4 com Consent Mode (LGPD).
+       Cookies de análise só depois do "Aceitar" no aviso de cookies (main.js) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: (function () { try { return localStorage.getItem('vm-consent') === 'granted' ? 'granted' : 'denied'; } catch (e) { return 'denied'; } })(),
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
     gtag('js', new Date());
 
     gtag('config', 'G-ETESD2NNK7');
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ETESD2NNK7"></script>
 
   <!-- ===== SEO ===== -->
   <title>Psicóloga Online em Goiânia | Vitória Mendonça · TCC · CRP 09/20287</title>
@@ -623,6 +630,8 @@
             <li><a href="#ajuda">Com o que posso ajudar</a></li>
             <li><a href="#como-funciona">Como funciona</a></li>
             <li><a href="#duvidas">Dúvidas frequentes</a></li>
+            <li><a href="politica-de-privacidade.html">Política de privacidade</a></li>
+            <li><a href="politica-de-privacidade.html#cookies" data-consent-open>Preferências de cookies</a></li>
           </ul>
         </nav>
 
